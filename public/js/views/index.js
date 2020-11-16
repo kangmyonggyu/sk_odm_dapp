@@ -12,6 +12,7 @@ function init_web3 () {
         }]
     };
 
+
     var provider = config.chain_endpoint;
     var ws_provider = config.ws_chain_endpoint;
     var web3 = new Web3(new Web3.providers.HttpProvider(provider, options))
