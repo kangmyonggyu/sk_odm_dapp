@@ -14,8 +14,8 @@ function init_web3 () {
 
     var provider = config.chain_endpoint;
     var ws_provider = config.ws_chain_endpoint;
-//    var web3 = new Web3(new Web3.providers.HttpProvider(provider, options))
-    var web3 = new Web3(new Web3.providers.WebsocketProvider(ws_provider, options))
+    var web3 = new Web3(new Web3.providers.HttpProvider(provider, options))
+//    var web3 = new Web3(new Web3.providers.WebsocketProvider(ws_provider, options))
 //    web3.transactionConfirmationBlocks = 1;
     return web3
 };
@@ -24,6 +24,11 @@ $( document ).ready(function() {
     console.log( "ready!" );
     console.log("contarct address:"+contract_address);
     contract = new web3.eth.Contract(abi, contract_address );
+    $("#odm_address_name").html("OBT Token (Contract Deployer) Address : "+ config.contract_address)
+    $("#brandowner_address_name").html("OBT Token("+ config.brandowner.account +")")
+    $("#company_a_address_name").html("OBT Token("+ config.company_a.account +")")
+    $("#company_b_address_name").html("OBT Token("+ config.company_b.account +")")
+    $("#company_c_address_name").html("OBT Token("+ config.company_c.account +")")
     get_all_tx();
     event_subscript();
     set_all_token_value();
@@ -134,7 +139,7 @@ function brandowner_to_deposit_transfer(private_key, from_address, token_value) 
         let txParams = {
             nonce:    _nonce,
             gasPrice: web3.utils.numberToHex(0x00),
-            gasLimit: web3.utils.numberToHex(1590000),
+            gasLimit: web3.utils.numberToHex(15900000),
             to:       contract_address,
             value:    '0x00',
             data:     contract.methods.api_brandowner_to_paymentguarantee(token_value).encodeABI(),
@@ -196,7 +201,7 @@ function refund_and_end_auction(private_key, from_address) {
         let txParams = {
             nonce:    _nonce,
             gasPrice: web3.utils.numberToHex(0x00),
-            gasLimit: web3.utils.numberToHex(1590000),
+            gasLimit: web3.utils.numberToHex(15900000),
             to:       contract_address,
             value:    '0x00',
             data:     contract.methods.api_bidding_processing().encodeABI(),
@@ -245,13 +250,6 @@ function insert_tx(tx, from, to, token) {
     });
 
     console.log("???");
-
-//    $.post( "/api/contract/save_tx", req_data)
-//      .then(function( res_data ) {
-//      console.log("get_all_tx 0");
-//      console.log("get_all_tx 1");
-//        get_all_tx();
-//    });
 }
 
 function get_all_tx() {
@@ -344,7 +342,7 @@ function sendTransfer(private_key, from_address, to_address, token_value, next_f
         let txParams = {
             nonce:    _nonce,
             gasPrice: web3.utils.numberToHex(0x00),
-            gasLimit: web3.utils.numberToHex(1590000),
+            gasLimit: web3.utils.numberToHex(15900000),
             to:       contract_address,
             value:    '0x00',
             data:     contract.methods.transfer(to_address, token_value).encodeABI(),
@@ -371,13 +369,13 @@ function sendTransfer(private_key, from_address, to_address, token_value, next_f
 }
 
 function event_subscript() {
-    contract.events.Transfer()
-        .on("data", function(event) {
-          let event_return_data = event.returnValues;
-          console.log("[[[[[[[[event_return_data]]]]]]]]")
-          console.log(event_return_data);
-//          insert_tx(event_return_data.tx, event_return_data.from, event_return_data.to, event_return_data.token)
-        }).on("error", console.error);
+//    contract.events.Transfer()
+//        .on("data", function(event) {
+//          let event_return_data = event.returnValues;
+//          console.log("[[[[[[[[event_return_data]]]]]]]]")
+//          console.log(event_return_data);
+//          insert_tx("", event_return_data.from.toLowerCase(), event_return_data.to.toLowerCase(), event_return_data.value)
+//        }).on("error", console.error);
 }
 
 function send_reset_auction_transfer(private_key, from_address) {
@@ -389,7 +387,7 @@ function send_reset_auction_transfer(private_key, from_address) {
         let txParams = {
             nonce:    _nonce,
             gasPrice: web3.utils.numberToHex(0x00),
-            gasLimit: web3.utils.numberToHex(1590000),
+            gasLimit: web3.utils.numberToHex(15900000),
             to:       contract_address,
             value:    '0x00',
             data:     contract.methods.reset_auction().encodeABI(),

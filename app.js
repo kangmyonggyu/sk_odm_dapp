@@ -54,6 +54,7 @@ app.post('/api/contract/get_tx', (req, res) => {
     var rows_list = []
     var input = address.toLowerCase()
     var query_str = `SELECT seq, tx, from_addr, to_addr, token, datetime FROM block.tb_tx WHERE from_addr = '${input}' or to_addr = '${input}' order by seq desc limit 3`;
+    console.log(query_str);
     client.query(query_str, (sql_err, sql_res) => {
         console.log(sql_res.rows[0])
         result[input] = sql_res.rows
