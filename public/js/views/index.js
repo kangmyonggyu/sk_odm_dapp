@@ -13,8 +13,10 @@ function init_web3 () {
     };
 
     var provider = config.chain_endpoint;
-    var web3 = new Web3(new Web3.providers.HttpProvider(provider, options))
-    web3.transactionConfirmationBlocks = 1;
+    var ws_provider = config.ws_chain_endpoint;
+//    var web3 = new Web3(new Web3.providers.HttpProvider(provider, options))
+    var web3 = new Web3(new Web3.providers.WebsocketProvider(ws_provider, options))
+//    web3.transactionConfirmationBlocks = 1;
     return web3
 };
 
@@ -156,13 +158,15 @@ function brandowner_to_deposit_transfer(private_key, from_address, token_value) 
 function bidding_company_to_deposit_token(private_key, from_address, token_value) {
     console.log("function call [company_to_deposit_transfer]")
     var _nonce = web3.utils.toHex(web3.eth.getTransactionCount(from_address))
+     console.log("1111")
     web3.eth.getTransactionCount(from_address)
       .then(_nonce => {
+        console.log("2222")
         let privateKey = new ethereumjs.Buffer.Buffer(private_key, 'hex')
         let txParams = {
             nonce:    _nonce,
             gasPrice: web3.utils.numberToHex(0x00),
-            gasLimit: web3.utils.numberToHex(1590000),
+            gasLimit: web3.utils.numberToHex(15900000),
             to:       contract_address,
             value:    '0x00',
             data:     contract.methods.api_bidding_company_to_paymentguarantee(token_value).encodeABI(),
@@ -170,7 +174,7 @@ function bidding_company_to_deposit_token(private_key, from_address, token_value
 
         let tx = new ethereumjs.Tx(txParams)
         tx.sign(privateKey);
-
+        console.log("3333")
         web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'))
             .then(function(receipt){
                 console.log(`Transaction Confirmed.`);
@@ -326,8 +330,6 @@ function draw_table(result) {
 }
 
 function open_window(id) {
-    console.log(id);
-    console.log("tx")
     var url = config.scan_url+'tx/'+id
     window.open(url,"");
 }
@@ -369,11 +371,13 @@ function sendTransfer(private_key, from_address, to_address, token_value, next_f
 }
 
 function event_subscript() {
-//    contract.events.Transfer()
-//        .on("data", function(event) {
-//          let event_return_data = event.returnValues;
-//          console.log(event_return_data);
-//        }).on("error", console.error);
+    contract.events.Transfer()
+        .on("data", function(event) {
+          let event_return_data = event.returnValues;
+          console.log("[[[[[[[[event_return_data]]]]]]]]")
+          console.log(event_return_data);
+//          insert_tx(event_return_data.tx, event_return_data.from, event_return_data.to, event_return_data.token)
+        }).on("error", console.error);
 }
 
 function send_reset_auction_transfer(private_key, from_address) {

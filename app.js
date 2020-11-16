@@ -35,7 +35,8 @@ app.post('/api/contract/save_tx', (req, res) => {
     var token = req.body.token;
     var query_str = `INSERT INTO block.tb_tx("tx", "from_addr", "to_addr", "token") VALUES ('${tx_hash}', '${from}', '${to}', '${token}')`;
     console.log(query_str)
-    client.connect(); client.query(query_str, (err, res) => {
+    client.connect();
+    client.query(query_str, (err, res) => {
         console.log("T_T");
         console.log(res);
         console.log(err);
@@ -57,5 +58,6 @@ app.post('/api/contract/get_tx', (req, res) => {
         console.log(sql_res.rows[0])
         result[input] = sql_res.rows
         res.end(JSON.stringify({ "result" : result }));
+        client.end();
     });
 })

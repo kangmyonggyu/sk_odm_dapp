@@ -31,6 +31,7 @@ var frontend_config = {
   },
   "testnet": {
     "chain_endpoint" : "https://besutest.chainz.network",
+    "ws_chain_endpoint": "wss://besutest.chainz.network",
     "scan_url" : "https://bexplorer.chainz.network/",
     "database_url" : "",
     "database_port" : "",
