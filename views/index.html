@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
@@ -43,8 +44,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">ODM System (3팀)</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fa fa-refresh text-white-50"></i>비크리 경매 초기화</a>
+                        <button id="btn_reset_auction" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-redo text-white-50"></i>  비크리 경매 초기화</button>
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -56,21 +57,40 @@
                                     <h6 class="m-0 font-weight-bold text-primary">ODM Platform</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-xl-12 col-md-2 mb-4">
+                                    <div class="col-xl-12 mb-4">
                                         <div class="card border-left-primary shadow h-100 py-2">
-                                            <div class="card-body">
+                                            <div class="card-body" style="padding: 0 1.25rem 0 1.25rem;">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                             OBT Token</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">15000</div>
+                                                        <div id="odm_token_value" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <button id="btn_end_auction" class="col-xl-12 mb-4 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">낙찰 진행 & 경매 종료</button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <div id="dataTable_wrapper" class="text-xs dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                            <div class="col-sm-12">
+                                                <table class="table table-bordered dataTable" style="line-height: 0.8rem;" id="dataTable_odm" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                            <thead>
+                                            <tr role="row">
+                                                <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Datetime</th>
+                                                <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 254px;">Transaction hash</th>
+                                                <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">From</th>
+                                                <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">To</th>
+                                                <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Token</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="odm_table">
+                                            </tbody>
+                                        </table></div></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">낙찰 진행 & 경매 종료</a>
                             </div>
                         </div>
 
@@ -80,30 +100,49 @@
                                     <h6 class="m-0 font-weight-bold text-success">Brand Owner</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-xl-12 col-md-2 mb-4">
+                                    <div class="col-xl-12 mb-4">
                                         <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
+                                            <div class="card-body" style="padding: 0 1.25rem 0 1.25rem;">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                             OBT TOKEN</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">10000</div>
+                                                        <div id="brandowner_token_value" class="h5 mb-0 font-weight-bold text-gray-800">-</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 mb-4 mw-100 navbar-search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small" placeholder="Payment Guarantee" aria-label="Search" aria-describedby="basic-addon2">
+                                            <input id="input_brandowner" type="text" class="form-control bg-light border-0 small" placeholder="Payment Guarantee" aria-label="Search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
-                                                    Deposit
+                                                <button id="btn_start_auction" class="btn btn-primary" type="button">
+                                                    Deposit & 경매 시작
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="table-responsive">
+                                        <div class="text-xs dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                                <div class="col-sm-12"><table class="table table-bordered dataTable" style="line-height: 0.8rem;" id="dataTable_brandowner" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                                    <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Datetime</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 254px;">Transaction hash</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">From</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 120px;">To</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Token</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="brandowner_table">
+                                                    </tbody>
+                                                </table></div></div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -117,16 +156,16 @@
                                     <h6 class="m-0 font-weight-bold text-info">Company A</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-xl-12 col-md-2 mb-4">
+                                    <div class="col-xl-12 mb-4">
                                         <div class="card border-left-info shadow h-100 py-2">
-                                            <div class="card-body">
+                                            <div class="card-body" style="padding: 0 1.25rem 0 1.25rem;">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">OBT TOKEN
                                                         </div>
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">2000</div>
+                                                                <div id="company_a_token_value" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -134,16 +173,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 mb-4 mw-100 navbar-search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
+                                            <input id="input_company_a" type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
+                                                <button id="btn_company_a" class="btn btn-primary" type="button">
                                                     제출
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="table-responsive">
+                                        <div class="text-xs dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table class="table table-bordered dataTable" style="line-height: 0.8rem;" id="dataTable_company_a" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                                    <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Datetime</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 254px;">Transaction hash</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">From</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 120px;">To</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Token</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="company_a_table">
+                                                    </tbody>
+                                                </table></div></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,16 +212,16 @@
                                     <h6 class="m-0 font-weight-bold text-info">Company B</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-xl-12 col-md-2 mb-4">
+                                    <div class="col-xl-12 mb-4">
                                         <div class="card border-left-info shadow h-100 py-2">
-                                            <div class="card-body">
+                                            <div class="card-body" style="padding: 0 1.25rem 0 1.25rem;">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">OBT TOKEN
                                                         </div>
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">2000</div>
+                                                                <div id="company_b_token_value" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -171,16 +229,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 mb-4 mw-100 navbar-search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
+                                            <input id="input_company_b" type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
+                                                <button id="btn_company_b" class="btn btn-primary" type="button">
                                                     제출
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="table-responsive">
+                                        <div class="text-xs dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                                <div class="col-sm-12"><table class="table table-bordered dataTable" style="line-height: 0.8rem;" id="dataTable_company_b" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                                    <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Datetime</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 254px;">Transaction hash</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">From</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 120px;">To</th>
+                                                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Token</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="company_b_table">
+                                                    </tbody>
+                                                </table></div></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -191,16 +267,16 @@
                                 <h6 class="m-0 font-weight-bold text-info">Company C</h6>
                             </div>
                             <div class="card-body">
-                                <div class="col-xl-12 col-md-2 mb-4">
+                                <div class="col-xl-12 mb-4">
                                     <div class="card border-left-info shadow h-100 py-2">
-                                        <div class="card-body">
+                                        <div class="card-body" style="padding: 0 1.25rem 0 1.25rem;">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">OBT TOKEN
                                                     </div>
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">2000</div>
+                                                            <div id="company_c_token_value" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,16 +284,34 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 mb-4 mw-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
+                                        <input id="input_company_c" type="text" class="form-control bg-light border-0 small" placeholder="경매금액" aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button id="btn_company_c" class="btn btn-primary" type="button">
                                                 제출
                                             </button>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="table-responsive">
+                                    <div class="text-xs dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
+                                            <div class="col-sm-12"><table class="table table-bordered dataTable" style="line-height: 0.8rem;" id="dataTable_company_c" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Datetime</th>
+                                                    <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 254px;">Transaction hash</th>
+                                                    <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">From</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 120px;">To</th>
+                                                    <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Token</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="company_c_table">
+                                                </tbody>
+                                            </table></div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -261,6 +355,7 @@
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -272,13 +367,13 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
+    <script src="js/common/abi.js"></script>
+    <script src="js/common/config.js"></script>
+    <script src="js/common/util.js"></script>
+    <script src="js/views/index.js"></script>
 </body>
 
 </html>

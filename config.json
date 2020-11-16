@@ -1,0 +1,88 @@
+{
+  "dev": {
+    "database_url" : "localhost",
+    "database_port" : "5432",
+    "database_database" : "postgres",
+    "database_id" : "admin",
+    "database_password" : "1234",
+    "contract_address" : "0x403d9cEaB54f4C9e6356cBD8167A773672F0f5c1",
+    "odm" : {
+      "address" : "0x5BaF7A3d823Ae40f24b5A8404c3a09CE331ba1b5",
+      "private_key" : "a8adffce3d75a57d6f1ed76725aa308a9474e802787665b0be320f4b4200102c"
+    },
+    "brandonwer": {
+      "address" : "0x7093ED07604e1230385e85276c774a3D7085A3dE",
+      "private_key" : "1e230ebe03e51e50f23b9b1cd578fd08dbccd767afcf50e4fc6a25980526c7ab"
+    },
+    "company_a": {
+      "address" : "0x68E54fF8a7e33945140cc5961cc6bC162E4A0b1d",
+      "private_key" : "e977c788f8bae5feb96ae950340860cd37755bd702f4ecd2414df728109dc671"
+    },
+    "company_b": {
+      "address" : "0xEF2c1EEC9a89c3bbA7bcC11E6f71D74c33e58b6F",
+      "private_key" : "48367338b8d85d535cebde130431b6abea80839390a933cfea5c71b0955398b0"
+    },
+    "company_c": {
+      "address" : "0xCCE89297B2dF1D7575Cbe8b8385093E91b206dD2",
+      "private_key" : "e389de25e48d07eaa329c8446775d43168a7f42277e9e83db878b9c42f4beee4"
+    }
+  },
+  "testnet": {
+    "chain_endpoint" : "https://besutest.chainz.network",
+    "database_url" : "",
+    "database_port" : "",
+    "database_schema" : "",
+    "database_id" : "",
+    "database_password" : "",
+    "contract_address" : "",
+    "odm" : {
+      "address" : "",
+      "private_key" : ""
+    },
+    "brandonwer": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_a": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_b": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_c": {
+      "address" : "",
+      "private_key" : ""
+    }
+  },
+  "mainnet": {
+    "chain_endpoint" : "https://besu.chainz.network",
+    "database_url" : "",
+    "database_port" : "",
+    "database_schema" : "",
+    "database_id" : "",
+    "database_password" : "",
+    "contract_address" : "",
+    "odm" : {
+      "address" : "",
+      "private_key" : ""
+    },
+    "brandonwer": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_a": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_b": {
+      "address" : "",
+      "private_key" : ""
+    },
+    "company_c": {
+      "address" : "",
+      "private_key" : ""
+    }
+  }
+}
