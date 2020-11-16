@@ -77,6 +77,7 @@ var frontend_config = {
   }
 }
 
+
 //var config = set_config("prod");
 //var config = set_config("development");
 var config = set_config("test");
@@ -95,4 +96,3 @@ function set_config(env) {
     console.log(config)
     return config;
 }
-
