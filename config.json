@@ -1,5 +1,6 @@
 {
   "dev": {
+    "server_port": "3000",
     "database_url" : "localhost",
     "database_port" : "5432",
     "database_database" : "postgres",
@@ -7,6 +8,7 @@
     "database_password" : "1234"
   },
   "testnet": {
+    "server_port": "3000",
     "database_url" : "",
     "database_port" : "",
     "database_schema" : "",
@@ -14,6 +16,7 @@
     "database_password" : ""
   },
   "mainnet": {
+    "server_port": "3000",
     "database_url" : "",
     "database_port" : "",
     "database_schema" : "",
