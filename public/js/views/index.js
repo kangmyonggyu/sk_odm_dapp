@@ -215,14 +215,25 @@ function refund_and_end_auction(private_key, from_address) {
             .then(function(receipt){
                 console.log(`Transaction Confirmed.`);
                 console.log(receipt);
-                insert_tx(receipt.transactionHash, receipt.from, receipt.to, 0)
+                call_winner_info(receipt.transactionHash, receipt.to);
                 remove_all_input_value()
                 set_all_token_value();
             });
     })
 }
 
+function call_winner_info(transactionHash, from) {
+    contract.methods.winner()
+        .call({from: config.odm.account},
+            function(error, result){
+                insert_tx(transactionHash, from, result[1], result[2]);
+                save_winner(result[0], transactionHash, result[2], result[1])
+                alert("낙찰 Transaction\n"+transactionHash+"\n\n낙찰회사\nCompany "+result[0]+"\n\n낙찰회사 Address\n"+result[1]+"\n\n낙찰금액\n"+web3.utils.fromWei(result[2], "ether"));
+    });
+}
+
 function reset_auction() {
+    alert("초기화에 약 3~4초 시간이 소요됩니다.\n잠시만 기다려주세요.");
     sendTransfer(config.brandowner.private_key, config.brandowner.account, config.odm.account, web3.utils.toWei($("#brandowner_token_value").text(), "ether"), "company_a");
 }
 
@@ -251,6 +262,29 @@ function insert_tx(tx, from, to, token) {
     });
 
     console.log("???");
+}
+
+function save_winner(win_company_name, win_tx_hash, win_token_value, win_company_address) {
+    console.log("save_winner");
+    var req_data = {
+        "win_company_name"           : win_company_name,
+        "win_tx_hash"                : win_tx_hash,
+        "win_token_value"            : win_token_value,
+        "win_company_address"        : win_company_address,
+    }
+    console.log(req_data);
+
+    $.ajax({
+        type: "POST",
+        url: "/api/contract/save_winner",
+        data: req_data,
+        dataType : "json",
+        success: function() {
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
 }
 
 function get_all_tx() {
@@ -284,6 +318,9 @@ function get_all_tx() {
         });
     }
 }
+
+
+
 
 function draw_table(result) {
     console.log("draw_table function")

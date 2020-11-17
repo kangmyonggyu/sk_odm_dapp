@@ -56,6 +56,37 @@ var abi = [
                 "type": "event"
               },
               {
+                "anonymous": false,
+                "inputs": [
+                  {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "tx",
+                    "type": "string"
+                  },
+                  {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                  },
+                  {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                  },
+                  {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "token",
+                    "type": "uint256"
+                  }
+                ],
+                "name": "event_transfer",
+                "type": "event"
+              },
+              {
                 "constant": true,
                 "inputs": [
                   {
@@ -340,6 +371,31 @@ var abi = [
                 ],
                 "payable": false,
                 "stateMutability": "nonpayable",
+                "type": "function"
+              },
+              {
+                "constant": true,
+                "inputs": [],
+                "name": "winner",
+                "outputs": [
+                  {
+                    "internalType": "string",
+                    "name": "company_name",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "company_address",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "token_amount",
+                    "type": "uint256"
+                  }
+                ],
+                "payable": false,
+                "stateMutability": "view",
                 "type": "function"
               },
               {

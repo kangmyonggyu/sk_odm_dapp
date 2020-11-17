@@ -37,7 +37,6 @@ app.post('/api/contract/save_tx', (req, res) => {
     console.log(query_str)
     client.connect();
     client.query(query_str, (err, res) => {
-        console.log("T_T");
         console.log(res);
         console.log(err);
         client.end();
@@ -59,6 +58,31 @@ app.post('/api/contract/get_tx', (req, res) => {
         console.log(sql_res.rows[0])
         result[input] = sql_res.rows
         res.end(JSON.stringify({ "result" : result }));
+        client.end();
+    });
+})
+
+app.post('/api/contract/save_winner', (req, res) => {
+    const client = new pg.Client(db_config);
+    var result = {}
+
+    console.log("req.body");
+    console.log(req.body);
+
+    client.connect();
+    var win_company_name    = req.body.win_company_name;
+    var win_tx_hash         = req.body.win_tx_hash;
+    var win_token_value     = req.body.win_token_value;
+    var win_company_address = req.body.win_company_address;
+
+    console.log("win_company_name");
+    console.log(win_company_name);
+
+    var query_str = `INSERT INTO block.tb_winner("win_company_name", "win_tx_hash", "win_token_value", "win_company_address") VALUES ('${win_company_name}', '${win_tx_hash}', '${win_token_value}', '${win_company_address}')`;
+    console.log(query_str);
+    client.query(query_str, (err, res) => {
+        console.log(res);
+        console.log(err);
         client.end();
     });
 })

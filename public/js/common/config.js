@@ -27,26 +27,26 @@ var frontend_config = {
     "chain_endpoint" : "https://besutest.chainz.network",
     "ws_chain_endpoint": "wss://besutest.chainz.network",
     "scan_url" : "https://bexplorer.chainz.network/",
-    "contract_address" : "0x0c57Ca1268DF961355864b495f8681A2150AA55F",
+    "contract_address" : "0x242990adCd80501Bc63D666F37dBEda9047410C6",
     "odm" : {
-      "account" : "0x0e9148dF19AC0e51E7EebAdec57324D63ef8a8bF",
-      "private_key" : "b530d97a37813d8d2f76a84e41d0d779b51d662c443b43ce2ae2e5cc9831ddea"
+      "account" : "0x56B9B17564D7B2C1cDf4166Bcceb32EDfB4a9511",
+      "private_key" : "0x39fcb451a731a0ad58e58fe1cbaa851c953062813dffe070e6a5a623f67b91de"
     },
     "brandowner": {
-      "account" : "0x06CEf859B7C25C706c56284b3D8d08090016c23b",
-      "private_key" : "9f270e8dc1c74408319271501a090636d1916453942c9fe6e0f3ae786a1372d2"
+      "account" : "0x4ACB42d6CD76001c2e427E2De6ACb27C4466eB12",
+      "private_key" : "0x793adce876dc3eed79236fe1436709c2d184372909e537d01a40f3404cb738ac"
     },
     "company_a": {
-      "account" : "0xF6c14524234728D042D60a9cFdB9D2bC4069632F",
-      "private_key" : "7b030ce25f740cee3c64662a2528bc0f9bb6206d1fba1f5ac13aa1b9729d97d9"
+      "account" : "0xC96c845d3246F52BEC42C13050bc36B9f1860298",
+      "private_key" : "0x96bcd872675e5f9d1658da06c9be13ab0bd1d8b0c0aca7a9c12bfd756aa590e6"
     },
     "company_b": {
-      "account" : "0xd86F2B693872BAC7cBaA854C72EFb654d6CD2392",
-      "private_key" : "9f55207be2a29be4e0bab2930be75d958e257b0c5628116341d52a4f3994f40d"
+      "account" : "0x9bE87345B869B2b331D4E91c7A7B30bc981Ee36E",
+      "private_key" : "0xdcc2d9b0137ebc47dbc2f32ab5290e26d51a88c3f9919bbb537285dadf07a97a"
     },
     "company_c": {
-      "account" : "0x40e895C58369380bd9c7Fc38b586869e4946c3Bd",
-      "private_key" : "030cfffcd4e11306916723b3e9dbae8c81de745dfa58e8e8ce76712d6ff58b1b"
+      "account" : "0xc9BeF9a0e1b49Bc55a3c9e6f4dC24039793d8F6b",
+      "private_key" : "0xdaa248872c01d66a341a91039f48a8a00cf71bde6665901cd91dbdf48586934c"
     }
   },
   "mainnet": {
