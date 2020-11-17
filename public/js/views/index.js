@@ -5,7 +5,7 @@ var contract;
 var contract_address;
 
 function init_web3 () {
-    var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyJ3ZWIzOioiLCJuZXQ6KiIsImV0aDoqIiwiZGVidWc6KiIsInR4cG9sOioiLCJlZWE6KiJdLCJleHAiOjE2MDUzMzUwOTZ9.xO3G29-45nokWAnLHVGEsfvECKLqpY4ZBVh8J_8eGNgPRstRd8D_aHouUGKWmv5_rRSEKsqun8uoIFflE-sMCcqEnUKhZusL2VqH3DghQ3iW--pxTTWyKJyXboXnX6XtPqChMtxqCSo_lro-FpcqdYU_S1f3Wv8LUgW-Com_4V3vhZ4X6DvsUyGOK7OUNq35148XH2UaIyDNvvWkqNvm1YD5lPoVS5ndB0IqbGTHZ7EXXRxwEKTYJtp2Ha2XPcJpX-JwSglqmPqCVcCNLVz2nV_hOtyPqGypx_KngE2v33LgGb0ud2QUN2fZWm93pNGv-zbSeZ5RViipjDJbxrl4kg";
+    var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyJuZXQ6KiIsImV0aDoqIiwiZGVidWc6KiIsInR4cG9vbDoqIiwiZWVhOioiXSwiZXhwIjoxNjA3MTQ3Njc0LCJ0ZWFtIjoiMDMifQ.LPlWdNzHpgpYTJ57aaxKqWk9lH0mJbwzToWIgvJKaJL-IQ7elyfSSWTSJWY-hlWX0_82463iopBfLvkdwJtD0_Twk7pTiUcEeP2tF_pO82LIgpRda34mG0pkWjiekrx4OgPJRrLiUoNVs7eI-2Y2SlmksAOwuQ40WJ0QhVIlojWdqk37E60cj62ckgsdqIwNEwjD1Syn1lDiUmsYarIQSstr9u8PM8xM4gtcJjOsNYcbEecMdMMq03_iBFDSn3cnb1YMPxcGCAIPkRUh4K2iAVpY0xde83qWVHnexI5kh6dLGi9jFGchFVSZnHwHqJ0drzRNmMy1xppFQX7o09Zn7Q";
     var options = {
         headers: [{
             name:"Authorization" , value: "Bearer " + token
