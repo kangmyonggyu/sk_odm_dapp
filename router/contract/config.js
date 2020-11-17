@@ -9,6 +9,5 @@ exports.config = function() {
     } else if (process.env.NODE_ENV == "prod") {
         config = config_json["mainnet"];
     }
-
     return config;
 }

@@ -21,10 +21,24 @@ app.engine('html', require('ejs').renderFile);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+config_json = require( './config.json');
 
 var server = app.listen(config.server_port, function(){
     console.log("Express server has started on port " + config.server_port)
 });
+
+app.get('/api/contract/config', (req, res) => {
+    var config;
+    if (process.env.NODE_ENV == "development") {
+        config = config_json["dev"]["dapp_config"]; // dapp_config 만 보내야 함 그 상위에는 db 정보가 있음.
+    } else if (process.env.NODE_ENV == "test") {
+        config = config_json["testnet"]["dapp_config"]; // dapp_config 만 보내야 함 그 상위에는 db 정보가 있음.
+    } else if (process.env.NODE_ENV == "prod") {
+        config = config_json["mainnet"]["dapp_config"]; // dapp_config 만 보내야 함 그 상위에는 db 정보가 있음.
+    }
+    res.end(JSON.stringify({ result : config }));
+})
+
 
 app.post('/api/contract/save_tx', (req, res) => {
     console.log(req.body);

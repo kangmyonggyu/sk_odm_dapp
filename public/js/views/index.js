@@ -1,8 +1,8 @@
 //const Web3 = require('web3');
 
-var web3 = init_web3();
+var web3;
 var contract;
-var contract_address = config.contract_address;
+var contract_address;
 
 function init_web3 () {
     var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyJ3ZWIzOioiLCJuZXQ6KiIsImV0aDoqIiwiZGVidWc6KiIsInR4cG9sOioiLCJlZWE6KiJdLCJleHAiOjE2MDUzMzUwOTZ9.xO3G29-45nokWAnLHVGEsfvECKLqpY4ZBVh8J_8eGNgPRstRd8D_aHouUGKWmv5_rRSEKsqun8uoIFflE-sMCcqEnUKhZusL2VqH3DghQ3iW--pxTTWyKJyXboXnX6XtPqChMtxqCSo_lro-FpcqdYU_S1f3Wv8LUgW-Com_4V3vhZ4X6DvsUyGOK7OUNq35148XH2UaIyDNvvWkqNvm1YD5lPoVS5ndB0IqbGTHZ7EXXRxwEKTYJtp2Ha2XPcJpX-JwSglqmPqCVcCNLVz2nV_hOtyPqGypx_KngE2v33LgGb0ud2QUN2fZWm93pNGv-zbSeZ5RViipjDJbxrl4kg";
@@ -11,7 +11,6 @@ function init_web3 () {
             name:"Authorization" , value: "Bearer " + token
         }]
     };
-
 
     var provider = config.chain_endpoint;
     var ws_provider = config.ws_chain_endpoint;
@@ -22,18 +21,31 @@ function init_web3 () {
 };
 
 $( document ).ready(function() {
-    console.log( "ready!" );
-    console.log("contarct address:"+contract_address);
-    contract = new web3.eth.Contract(abi, contract_address );
-    $("#odm_address_name").html("OBT Token (Contract Deployer) Address : "+ config.contract_address)
-    $("#brandowner_address_name").html("OBT Token("+ config.brandowner.account +")")
-    $("#company_a_address_name").html("OBT Token("+ config.company_a.account +")")
-    $("#company_b_address_name").html("OBT Token("+ config.company_b.account +")")
-    $("#company_c_address_name").html("OBT Token("+ config.company_c.account +")")
-    get_all_tx();
-    event_subscript();
-    set_all_token_value();
-    console.log('typeof ethereumjs.Tx:',            (typeof ethereumjs.Tx))
+    console.log( "document ready!" );
+    $.ajax({
+        type: "GET",
+        url: "/api/contract/config",
+        dataType : "json",
+        success: function(res) {
+            config = res.result;
+            web3 = init_web3();
+            contract_address = config.contract_address;
+            console.log("contarct address:"+contract_address);
+            contract = new web3.eth.Contract(abi, contract_address );
+            $("#odm_address_name").html("OBT Token (Contract Deployer) Address : "+ config.contract_address)
+            $("#brandowner_address_name").html("OBT Token("+ config.brandowner.account +")")
+            $("#company_a_address_name").html("OBT Token("+ config.company_a.account +")")
+            $("#company_b_address_name").html("OBT Token("+ config.company_b.account +")")
+            $("#company_c_address_name").html("OBT Token("+ config.company_c.account +")")
+            get_all_tx();
+            event_subscript();
+            set_all_token_value();
+            console.log('typeof ethereumjs.Tx:',            (typeof ethereumjs.Tx))
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
 });
 
 $("#btn_start_auction").click(function(){
