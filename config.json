@@ -1,26 +1,26 @@
 {
   "dev": {
-    "server_port": "3000",
-    "database_url" : "localhost",
+80    "server_port": "3000",
+    "database_url" : "odm-prod.crgbrl2fanb5.ap-northeast-2.rds.amazonaws.com",
     "database_port" : "5432",
-    "database_database" : "postgres",
-    "database_id" : "admin",
-    "database_password" : "1234"
+    "database_database" : "dev",
+    "database_id" : "postgres",
+    "database_password" : "skcc!23$"
   },
   "testnet": {
     "server_port": "3000",
-    "database_url" : "",
-    "database_port" : "",
-    "database_schema" : "",
-    "database_id" : "",
-    "database_password" : ""
+    "database_url" : "odm-prod.crgbrl2fanb5.ap-northeast-2.rds.amazonaws.com",
+    "database_port" : "5432",
+    "database_database" : "test",
+    "database_id" : "postgres",
+    "database_password" : "skcc!23$"
   },
   "mainnet": {
-    "server_port": "3000",
-    "database_url" : "",
-    "database_port" : "",
-    "database_schema" : "",
-    "database_id" : "",
-    "database_password" : ""
+    "server_port": "8080",
+    "database_url" : "odm-prod.crgbrl2fanb5.ap-northeast-2.rds.amazonaws.com",
+    "database_port" : "5432",
+    "database_database" : "prod",
+    "database_id" : "postgres",
+    "database_password" : "skcc!23$"
   }
 }
