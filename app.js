@@ -22,8 +22,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-var server = app.listen(3000, function(){
-    console.log("Express server has started on port 3000")
+var server = app.listen(config.server_port, function(){
+    console.log("Express server has started on port " + config.server_port)
 });
 
 app.post('/api/contract/save_tx', (req, res) => {
