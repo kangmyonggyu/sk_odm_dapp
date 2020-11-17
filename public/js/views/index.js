@@ -48,20 +48,50 @@ $( document ).ready(function() {
     });
 });
 
+
+
 $("#btn_start_auction").click(function(){
     start_auction();
+});
+
+$('#btn_start_auction').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            start_auction();
+            return false; // prevent the button click from happening
+        }
 });
 
 $("#btn_company_a").click(function(){
     send_company_a_to_odm();
 });
 
+$('#btn_company_a').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            send_company_a_to_odm();
+            return false; // prevent the button click from happening
+        }
+});
+
 $("#btn_company_b").click(function(){
     send_company_b_to_odm();
 });
 
+$('#btn_company_b').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            send_company_b_to_odm();
+            return false; // prevent the button click from happening
+        }
+});
+
 $("#btn_company_c").click(function(){
     send_company_c_to_odm();
+});
+
+$('#btn_company_c').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            send_company_c_to_odm();
+            return false; // prevent the button click from happening
+        }
 });
 
 $("#btn_end_auction").click(function(){
@@ -265,7 +295,8 @@ function insert_tx(tx, from, to, token) {
         data: req_data,
         dataType : "json",
         success: function() {
-            get_all_tx();
+            setTimeout(get_all_tx, 100)
+//            get_all_tx();
         },
         error: function (err) {
              console.log("get_all_tx error");
@@ -331,13 +362,11 @@ function get_all_tx() {
     }
 }
 
-
-
-
 function draw_table(result) {
     console.log("draw_table function")
     console.log(config.odm.account)
-    var table_id = ""
+    var table_id = "";
+    var table_target_address = "";
     var table_data
     if (config.contract_address.toLowerCase() in result) {
         table_id = "odm_table"
@@ -357,11 +386,12 @@ function draw_table(result) {
     } else {
         return
     }
+    console.log("11111");
     $("#"+table_id).html("");
     console.log(table_data)
     var table_str = ""
     for (var i = 0 ; i < table_data.length ; i ++) {
-        var url = "https://naver.com"
+        console.log("22222");
         table_str += '<tr role="row">'
                     +'<td>'+table_data[i].datetime+'</td>'
                     +'<td style="display:flex">'
@@ -374,7 +404,9 @@ function draw_table(result) {
                     +'<td>'+web3.utils.fromWei(table_data[i].token, "ether")+'</td>'
                     +'</tr>'
     }
+    console.log("33333");
     $("#"+table_id).html(table_str);
+    console.log("444444");
 }
 
 function open_window(id) {
