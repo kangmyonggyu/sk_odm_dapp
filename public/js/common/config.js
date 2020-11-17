@@ -53,26 +53,26 @@ var frontend_config = {
     "chain_endpoint" : "https://besu.chainz.network",
     "ws_chain_endpoint": "wss://besu.chainz.network",
     "scan_url" : "https://besuscan.chainz.network/",
-    "contract_address" : "", //TODO: 생성후에 넣기
+    "contract_address" : "0x38efc66106d845c2213da0967Cad2D65DBa420d3", //TODO: 생성후에 넣기
     "odm" : {
       "account" : "0x2e46bb261A0352aDA4dFc2095b77762ec94481e0",
-      "private_key" : "0xa4aaa8c1db80d6449b11c6ed2e2d40c17f5a6c5304c9599371152632e64b2bdf"
+      "private_key" : "a4aaa8c1db80d6449b11c6ed2e2d40c17f5a6c5304c9599371152632e64b2bdf"
     },
     "brandowner": {
       "account" : "0xc5D50eCcb13a6428BEd539ccB02294A1Bb90FDD6",
-      "private_key" : "0x4ac043875cb0fa419ebcd91c4c4fe0d8297bc644e3479942ec3d2bf0d343f36a"
+      "private_key" : "4ac043875cb0fa419ebcd91c4c4fe0d8297bc644e3479942ec3d2bf0d343f36a"
     },
     "company_a": {
       "account" : "0xACb3907F9c6cdb834EA1277D99278F283cD82066",
-      "private_key" : "0x63edbbfbef7995191ef02cd8a882e78ecfae3b129c0f1fefb3ade5f2abf5983e"
+      "private_key" : "63edbbfbef7995191ef02cd8a882e78ecfae3b129c0f1fefb3ade5f2abf5983e"
     },
     "company_b": {
       "account" : "0x5B3eCaB5c578A26992C2F8677d84812362A036E7",
-      "private_key" : "0xd129ce90ba62abd618596a295da2c0dc446e00a50b06a562b4265a00da9d6f78"
+      "private_key" : "d129ce90ba62abd618596a295da2c0dc446e00a50b06a562b4265a00da9d6f78"
     },
     "company_c": {
       "account" : "0x8A711d936aDBBf9495FF3064395B7D2590D64ceE",
-      "private_key" : "0xdf0d3bdcf5001bcc2cbc64701f83c083b0af5d70adf1d3cf83c12734cf89835d"
+      "private_key" : "df0d3bdcf5001bcc2cbc64701f83c083b0af5d70adf1d3cf83c12734cf89835d"
     }
   }
 }
