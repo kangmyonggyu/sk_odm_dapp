@@ -27,26 +27,26 @@ var frontend_config = {
     "chain_endpoint" : "https://besutest.chainz.network",
     "ws_chain_endpoint": "wss://besutest.chainz.network",
     "scan_url" : "https://bexplorer.chainz.network/",
-    "contract_address" : "0x242990adCd80501Bc63D666F37dBEda9047410C6",
+    "contract_address" : "0xeEbD36a091C0A4516388C30EE7bA12374791749c",
     "odm" : {
       "account" : "0x56B9B17564D7B2C1cDf4166Bcceb32EDfB4a9511",
-      "private_key" : "0x39fcb451a731a0ad58e58fe1cbaa851c953062813dffe070e6a5a623f67b91de"
+      "private_key" : "39fcb451a731a0ad58e58fe1cbaa851c953062813dffe070e6a5a623f67b91de"
     },
     "brandowner": {
       "account" : "0x4ACB42d6CD76001c2e427E2De6ACb27C4466eB12",
-      "private_key" : "0x793adce876dc3eed79236fe1436709c2d184372909e537d01a40f3404cb738ac"
+      "private_key" : "793adce876dc3eed79236fe1436709c2d184372909e537d01a40f3404cb738ac"
     },
     "company_a": {
       "account" : "0xC96c845d3246F52BEC42C13050bc36B9f1860298",
-      "private_key" : "0x96bcd872675e5f9d1658da06c9be13ab0bd1d8b0c0aca7a9c12bfd756aa590e6"
+      "private_key" : "96bcd872675e5f9d1658da06c9be13ab0bd1d8b0c0aca7a9c12bfd756aa590e6"
     },
     "company_b": {
       "account" : "0x9bE87345B869B2b331D4E91c7A7B30bc981Ee36E",
-      "private_key" : "0xdcc2d9b0137ebc47dbc2f32ab5290e26d51a88c3f9919bbb537285dadf07a97a"
+      "private_key" : "dcc2d9b0137ebc47dbc2f32ab5290e26d51a88c3f9919bbb537285dadf07a97a"
     },
     "company_c": {
       "account" : "0xc9BeF9a0e1b49Bc55a3c9e6f4dC24039793d8F6b",
-      "private_key" : "0xdaa248872c01d66a341a91039f48a8a00cf71bde6665901cd91dbdf48586934c"
+      "private_key" : "daa248872c01d66a341a91039f48a8a00cf71bde6665901cd91dbdf48586934c"
     }
   },
   "mainnet": {

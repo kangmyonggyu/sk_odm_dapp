@@ -241,8 +241,8 @@ function insert_tx(tx, from, to, token) {
     console.log("insert_tx");
     var req_data = {
         "tx"        : tx,
-        "from"      : from,
-        "to"        : to,
+        "from"      : from.toLowerCase(),
+        "to"        : to.toLowerCase(),
         "token"     : token,
     }
     console.log(req_data);
@@ -270,7 +270,7 @@ function save_winner(win_company_name, win_tx_hash, win_token_value, win_company
         "win_company_name"           : win_company_name,
         "win_tx_hash"                : win_tx_hash,
         "win_token_value"            : win_token_value,
-        "win_company_address"        : win_company_address,
+        "win_company_address"        : win_company_address.toLowerCase(),
     }
     console.log(req_data);
 
